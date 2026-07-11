@@ -12,8 +12,8 @@
 
 /************************ Configure I2C for sensors ***************************
  *
- * PA0 - SDA
- * PB4 - SCL
+ * PD2 - SDA
+ * PC3 - SCL
  *
  */
 
@@ -41,7 +41,6 @@
 #endif /* UART_PRINTF_MODE */
 
 /********************* Configure External Battery GPIO ******************************/
-#define VOLTAGE_DETECT_PIN  GPIO_PC5
 
 /***************************** Configure LED  ***************************************/
 
