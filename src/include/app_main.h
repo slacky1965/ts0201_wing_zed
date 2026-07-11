@@ -87,8 +87,10 @@ status_t app_humidityCb(zclIncomingAddrInfo_t *pAddrInfo, uint8_t cmdId, void *c
 void app_leaveCnfHandler(nlme_leave_cnf_t *pLeaveCnf);
 void app_leaveIndHandler(nlme_leave_ind_t *pLeaveInd);
 void app_otaProcessMsgHandler(uint8_t evt, uint8_t status);
-void app_wakeupPinLevelChange(void);
+// void app_wakeupPinLevelChange(void);
+#if FIND_AND_BIND_SUPPORT
 int32_t app_bdbFindAndBindStart(void *arg);
+#endif
 
 
 #endif /* SRC_INCLUDE_APP_MAIN_H_ */
