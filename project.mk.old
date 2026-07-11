@@ -1,0 +1,38 @@
+OUT_DIR += \
+/$(SRC_PATH) \
+/$(SRC_PATH)/include \
+/platform/boot/8258 \
+/platform/chip_8258 \
+/platform/chip_8258/flash
+
+OBJS += \
+$(OUT_PATH)/$(SRC_PATH)/main.o \
+$(OUT_PATH)/$(SRC_PATH)/i2c_sw.o \
+$(OUT_PATH)/$(SRC_PATH)/lcd.o \
+$(OUT_PATH)/$(SRC_PATH)/app_sht30.o \
+$(OUT_PATH)/$(SRC_PATH)/irq_handler.o \
+$(OUT_PATH)/platform/boot/8258/cstartup_8258.o \
+$(OUT_PATH)/platform/chip_8258/flash.o \
+$(OUT_PATH)/platform/chip_8258/adc.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_common.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid011460c8.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid1060c8.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid13325e.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid134051.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid136085.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid1360c8.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid1360eb.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid14325e.o \
+$(OUT_PATH)/platform/chip_8258/flash/flash_mid1460c8.o
+
+$(OUT_PATH)/$(SRC_PATH)/%.o: $(SRC_PATH)/%.c
+	@echo 'Building file: $<'
+	@$(CC) $(GCC_FLAGS) $(INCLUDE_PATHS) -c -o"$@" "$<"
+
+$(OUT_PATH)/platform/boot/8258/%.o: $(SDK_PATH)/platform/boot/8258/%.S
+	@echo 'Building file: $<'
+	@$(CC) $(BOOT_FLAG) $(INCLUDE_PATHS) -c -o"$@" "$<"
+
+$(OUT_PATH)/platform/%.o: $(SDK_PATH)/platform/%.c
+	@echo 'Building file: $<'
+	@$(CC) $(GCC_FLAGS) $(INCLUDE_PATHS) -c -o"$@" "$<"

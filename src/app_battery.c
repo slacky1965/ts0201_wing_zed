@@ -1,0 +1,58 @@
+#include "tl_common.h"
+#include "zcl_include.h"
+
+#include "app_main.h"
+
+
+/*********************************************************************
+ * @fn      get_battery_level
+ *
+ * @brief   Convert battery voltage in millivolts to Zigbee battery percentage
+ *
+ * @param   battery_mv - battery voltage in millivolts
+ *
+ * @return  Battery level in Zigbee format (0x00-0xC8)
+ */
+// 2200..3100 mv - 0..100%
+static uint8_t get_battery_level(uint16_t battery_mv) {
+    /* Zigbee 0% - 0x0, 50% - 0x64, 100% - 0xc8 */
+    uint16_t battery_level = 0;
+    if (battery_mv > MIN_VBAT_MV) {
+        battery_level = (battery_mv - MIN_VBAT_MV) * 0xC8 / (MAX_VBAT_MV - MIN_VBAT_MV);
+        if (battery_level > 0xC8)
+            battery_level = 0xC8;
+    }
+    return battery_level;
+}
+
+/*********************************************************************
+ * @fn      batteryCb
+ *
+ * @brief   Timer callback to read battery voltage and update ZCL attributes
+ *
+ * @param   arg - unused callback argument
+ *
+ * @return  0 always
+ */
+int32_t batteryCb(void *arg) {
+
+    uint16_t voltage_raw = drv_get_adc_data();
+    uint8_t voltage = (uint8_t)(voltage_raw/100);
+    uint8_t level = get_battery_level(voltage_raw);
+
+    APP_DEBUG(DEBUG_BATTERY_EN, "Voltage_raw: %d\r\n", voltage_raw);
+    APP_DEBUG(DEBUG_BATTERY_EN, "Voltage:     %d\r\n", voltage);
+    APP_DEBUG(DEBUG_BATTERY_EN, "Level:       %d\r\n", level);
+
+    zcl_setAttrVal(APP_ENDPOINT1, ZCL_CLUSTER_GEN_POWER_CFG, ZCL_ATTRID_BATTERY_VOLTAGE, &voltage);
+    zcl_setAttrVal(APP_ENDPOINT1, ZCL_CLUSTER_GEN_POWER_CFG, ZCL_ATTRID_BATTERY_PERCENTAGE_REMAINING, &level);
+
+    if (level < BATTERY_LOW) {
+        lcd_battery_set(ON);
+    } else {
+        lcd_battery_set(OFF);
+    }
+
+    return 0;
+}
+
