@@ -143,7 +143,7 @@ bool onoff_get_one_device(void) {
 }
 
 /*********************************************************************
- * @fn      app_edle_bind_tbl
+ * @fn      app_idle_bind_tbl
  *
  * @brief   Check if the binding table update is idle
  *
@@ -151,7 +151,7 @@ bool onoff_get_one_device(void) {
  *
  * @return  true if idle, false otherwise
  */
-bool app_edle_bind_tbl(void) {
+bool app_idle_bind_tbl(void) {
     return app_bind_tbl.idle;
 }
 

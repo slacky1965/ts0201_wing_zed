@@ -655,7 +655,7 @@ void proc_temp_hum_onoff(void) {
     printf("Start OnOff control\r\n");
 #endif /* UART_PRINTF_MODE */
 
-    if (app_edle_bind_tbl()) return;
+    if (app_idle_bind_tbl()) return;
 
     if (onoff_get_one_device()) {
 //        printf("one device\r\n");

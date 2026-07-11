@@ -17,7 +17,7 @@ typedef struct {
 
 int32_t app_bindTimerCb(void *args);
 void app_update_bind_tbl(void *args);
-bool app_edle_bind_tbl(void);
+bool app_idle_bind_tbl(void);
 bool onoff_get_one_device(void);
 uint8_t *get_ieee_coordinator(void);
 
