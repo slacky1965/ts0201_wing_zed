@@ -18,7 +18,7 @@ void start_message(void) {
 #ifdef ZCL_OTA
         APP_DEBUG(UART_PRINTF_MODE, "OTA mode enabled. MCU boot from address: 0x%x\r\n", mcuBootAddrGet());
 #else
-        APP_DEBUG(UART_PRINTF_MODE, "OTA mode desabled. MCU boot from address: 0x%x\r\n", mcuBootAddrGet());
+        APP_DEBUG(UART_PRINTF_MODE, "OTA mode disabled. MCU boot from address: 0x%x\r\n", mcuBootAddrGet());
 #endif
 
 #if UART_PRINTF_MODE
