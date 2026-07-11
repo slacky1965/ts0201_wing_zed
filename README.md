@@ -1,5 +1,8 @@
 # <a id="Top">Tuya Temperature and Relative Humidity Sensor Zigbee with custom firmware</a>
 
+[![](https://img.shields.io/badge/Repository-ts0201__wing__zed-blue.svg?logo=github)](https://github.com/slacky1965/ts0201_wing_zed)
+[![](https://img.shields.io/github/v/release/slacky1965/ts0201_wing_zed.svg)](https://github.com/slacky1965/ts0201_wing_zed/releases)
+
 Альтернативные версии на различные датчики `Zigbee` можно еще посмотреть у [pvvx](https://github.com/pvvx/ZigbeeTLc).
 
 <img src="doc/images/ts0201_wing.jpg"/>
