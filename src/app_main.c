@@ -61,7 +61,7 @@ uint16_t bdb_findBindClusterList[] = {
 /**
  *  @brief Definition for BDB finding and binding cluster number
  */
-#define FIND_AND_BIND_CLUSTER_NUM       (sizeof(bdb_findBindClusterList)/sizeof(bdb_findBindClusterList[0]))
+#define FIND_AND_BIND_CLUSTER_NUM       sizeof(bdb_findBindClusterList)/sizeof(bdb_findBindClusterList[0])
 
 /**
  *  @brief Definition for bdb commissioning setting
