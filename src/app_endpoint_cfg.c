@@ -14,9 +14,9 @@
 #endif
 
 #define R               ACCESS_CONTROL_READ
-#define RW              (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE)
-#define RR              (ACCESS_CONTROL_READ | ACCESS_CONTROL_REPORTABLE)
-#define RWR             (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE | ACCESS_CONTROL_REPORTABLE)
+#define RW              ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE
+#define RR              ACCESS_CONTROL_READ | ACCESS_CONTROL_REPORTABLE
+#define RWR             ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE | ACCESS_CONTROL_REPORTABLE
 
 #define ZCL_UINT8       ZCL_DATA_TYPE_UINT8
 #define ZCL_INT8        ZCL_DATA_TYPE_INT8
@@ -92,10 +92,10 @@ const uint16_t app_ep2_outClusterList[] =
 /**
  *  @brief Definition for Server cluster number and Client cluster number
  */
-#define APP_EP1_IN_CLUSTER_NUM   sizeof(app_ep1_inClusterList)/sizeof(app_ep1_inClusterList[0])
-#define APP_EP1_OUT_CLUSTER_NUM  sizeof(app_ep1_outClusterList)/sizeof(app_ep1_outClusterList[0])
-#define APP_EP2_IN_CLUSTER_NUM   sizeof(app_ep2_inClusterList)/sizeof(app_ep2_inClusterList[0])
-#define APP_EP2_OUT_CLUSTER_NUM  sizeof(app_ep2_outClusterList)/sizeof(app_ep2_outClusterList[0])
+#define APP_EP1_IN_CLUSTER_NUM   (sizeof(app_ep1_inClusterList)/sizeof(app_ep1_inClusterList[0]))
+#define APP_EP1_OUT_CLUSTER_NUM  (sizeof(app_ep1_outClusterList)/sizeof(app_ep1_outClusterList[0]))
+#define APP_EP2_IN_CLUSTER_NUM   (sizeof(app_ep2_inClusterList)/sizeof(app_ep2_inClusterList[0]))
+#define APP_EP2_OUT_CLUSTER_NUM  (sizeof(app_ep2_outClusterList)/sizeof(app_ep2_outClusterList[0]))
 
 /**
  *  @brief Definition for simple description for HA profile
@@ -360,7 +360,7 @@ const zcl_specClusterInfo_t g_appEp1ClusterList[] = {
 #endif
 };
 
-uint8_t APP_EP1_CB_CLUSTER_NUM = sizeof(g_appEp1ClusterList)/sizeof(g_appEp1ClusterList[0]);
+uint8_t APP_EP1_CB_CLUSTER_NUM = (sizeof(g_appEp1ClusterList)/sizeof(g_appEp1ClusterList[0]));
 
 const zcl_specClusterInfo_t g_appEp2ClusterList[] = {
     {ZCL_CLUSTER_GEN_IDENTIFY,               MANUFACTURER_CODE_NONE, ZCL_IDENTIFY2_ATTR_NUM,         identify2_attrTbl,         zcl_identify_register,                  app_identifyCb      },
@@ -369,4 +369,4 @@ const zcl_specClusterInfo_t g_appEp2ClusterList[] = {
 #endif
 };
 
-uint8_t APP_EP2_CB_CLUSTER_NUM = sizeof(g_appEp2ClusterList)/sizeof(g_appEp2ClusterList[0]);
+uint8_t APP_EP2_CB_CLUSTER_NUM = (sizeof(g_appEp2ClusterList)/sizeof(g_appEp2ClusterList[0]));
